@@ -47,7 +47,7 @@ Ensure you have the following installed on your system:
 
 4. Upload!
 
-### TODO List
+## TODO List
 - [ ] Upload main.ino
 - [ ] Upload secrets.hpp with placeholders
 - [ ] Create .gitignore with secrets.hpp
