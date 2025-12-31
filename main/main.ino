@@ -35,7 +35,6 @@ namespace Settings
 
     // DHT
     inline constexpr static const uint8_t DHTPin = 42u;
-    inline constexpr static const auto DHTType = DHT22;
 
     // MQ2
     inline constexpr static const uint8_t MQ2Pin = 14;
@@ -67,7 +66,7 @@ namespace Devices
     PubSubClient MQTTClient(WiFiClient);
 
     LiquidCrystal_I2C LCD = LiquidCrystal_I2C(0x27, Settings::LCDColumns, Settings::LCDRows);  
-    DHT THHSensor = DHT(Settings::DHTPin, Settings::DHTType);
+    DHT THHSensor = DHT(Settings::DHTPin, DHT22);
     auto MQ2Read = []() -> uint16_t { return static_cast<uint16_t>(analogRead(Settings::MQ2Pin)); };
 
     auto GreenLEDToggle = [](bool enabled = true) -> void { digitalWrite(Settings::GreenLEDPin, enabled); };
@@ -286,7 +285,7 @@ void loop()
         Devices::LCD.printf("%.1fC", heatIndex);
 
         Devices::LCD.setCursor(Settings::GasPosition.Column, Settings::GasPosition.Row);
-        Devices::LCD.printf("%u CO2", mq2Value);
+        Devices::LCD.printf("%u / %u CO2", mq2Value, Settings::GasThreshold);
     }
 
     // Publish values to MQTT
