@@ -48,9 +48,10 @@ Ensure you have the following installed on your system:
 4. Upload!
 
 ## TODO List
-- [ ] Upload main.ino
-- [ ] Upload secrets.hpp with placeholders
+- [x] Upload main.ino
+- [x] Upload secrets.hpp with placeholders
 - [ ] Create .gitignore with secrets.hpp
+- [ ] Replace std::string with String
 
 ## License
 
